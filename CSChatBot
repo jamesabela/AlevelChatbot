@@ -1,0 +1,41 @@
+qanda = {
+    "assess": "The course is assessed by exams. You will take 2 exams in year 12 and 2 exams in year 13. There's a coding exam, but no essays.",
+    "assessment": "The course is assessed by exams. You will take 2 exams in year 12 and 2 exams in year 13. There's a coding exam, but no essays.",
+    "career": "Virtually every industry needs computer scientists and the requirements continue to grow from robotics, games design through to competitor analysis and social marketing",
+    "demand":"Even though there are now more computer scientist entering the job market there is much greater demand for these graduates!",
+    "development":"In computer science you will learn how to develop programs/video games",
+    "difficult":"It's no more difficult than any other respected A-level",
+    "easy":"It's no more difficult than any other respected A-level. However most of my students say it is much easier than Maths or Psychology",
+    "fun":"Yes it is, according to my year 12 and 13 students.",
+    "game": "In CS we will show you the coding and tools to make games",
+    "gaming": "In CS we will show you the coding and tools to make games",
+    "grade":"Grades are very good in CS, but what's even better are the amazing university offers!",
+    "grades":"Grades are very good in CS, but what's even better are the amazing university offers!",
+    "hacking":"You will be given knowledge that will enable hacking, but we also teach you the ethics so that you are a WHITE hat",
+    "language":"You will learn the python programming language.",
+    "learn":"You will study coding in Python and how computers work.",
+    "learning":"You will study coding in Python and how computers work.",
+    "life":"42",
+    "paid": "Computer Science is the best paying degree out of univeristy.",
+    "pay": "Computer Science is the best paying degree out of univeristy.",
+    "portfolio":"You will get the opportunity to make projects that you can use for Extended Project and to help you get into a great university.",
+    "study":"It is a bit difficult but you will get there.",
+    "syntax":"What is the meaning of life?",
+    "time":"Time is relative"
+	}
+
+def questionprocess(sentence):
+    sentence = sentence.strip("?")
+    """If any of the words in the user's input was a greeting, return a greeting response"""
+    for word in sentence.split():
+        if word.lower() in qanda.keys():
+            response = qanda.get(word.lower())
+            return response
+
+while True:
+    question = input("\nWhat would you like to ask about Computer Science: ")
+    response=questionprocess(question)
+    if response==None:
+        print("Sorry I'm not the smartest chatbot...Perhaps better ask Mr Abela")
+    else:
+        print(response)
