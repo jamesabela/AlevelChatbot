@@ -1,0 +1,85 @@
+from tkinter import *
+from math import *
+
+qanda = {
+    "assess": "The course is assessed by exams. You will take 2 exams in year 12 and 2 exams in year 13. There's a coding exam, but no essays.",
+    "assessment": "The course is assessed by exams. You will take 2 exams in year 12 and 2 exams in year 13. There's a coding exam, but no essays.",
+    "career": "Virtually every industry needs computer scientists and the requirements continue to grow from robotics, games design through to competitor analysis and social marketing",
+    "code": "We will learn Python as the main programming language.",
+    "demand": "Even though there are now more computer scientist entering the job market there is much greater demand for these graduates!",
+    "development": "In computer science you will learn how to develop programs/video games",
+    "difference": "Not only can you help charities with their web-presence and fund raising, you can help Open Source projects make a massive difference to millions of lives",
+    "difficult": "It's no more difficult than any other respected A-level",
+    "easy": "It's no more difficult than any other respected A-level. However most of my students say it is much easier than Maths or Psychology",
+    "fun": "Yes it is, according to my year 12 and 13 students.",
+    "game": "In CS we will show you the coding and tools to make games",
+    "grade": "Grades are very good in CS, but what's even better are the amazing university offers! CS students from Garden are being offered much lower grade tariffs at a wide range of prestigious universities.",
+    "hack": "You will be given knowledge that will enable hacking, but we also teach you the ethics so that you are a WHITE hat",
+    "language": "You will learn the python programming language.",
+    "learn": "You will study coding in Python and how computers work. You can also ask about the units we will study.",
+    "life": "42",
+    "module": "Your units will include: internet technologies, hardware, security, privacy and data integrity, ethics, databases, programming and problem solving.",
+    "paid": "Computer Science is the best paying degree out of univeristy.",
+    "pay": "Computer Science is the best paying degree out of univeristy.",
+    "portfolio": "You will get the opportunity to make projects that you can use for Extended Project and to help you get into a great university.",
+    "Scratch":"Occasionally we will use Scratch to see how an algorithm works",
+    "share":"You can share important information on CS with this link http://bit.ly/AlevelCompSci",
+    "study": "Your units will include: internet technologies, hardware, security, privacy and data integrity, ethics, databases, programming and problem solving.",
+    "syntax": "What is the meaning of life?",
+    "time": "Time is relative",
+    "unit": "Your units will include: internet technologies, hardware, security, privacy and data integrity, ethics, databases, programming and problem solving.",
+    "why": "Computer science is the best paid career, you can make the most difference and it's very enjoyable"
+}
+
+def questionprocess(sentence):
+    sentence = sentence.strip("?")
+    """If any of the words in the user's input was a greeting, return a greeting response"""
+    for word in sentence.split():
+
+        # Can you figure out how this handles English?
+        # Have a look at http://pythonchallenges.weebly.com/string-slicing.html for clues
+
+        if word[0:-1].lower() in qanda.keys():
+            response = qanda.get(word[0:-1].lower())
+            return response
+
+        elif word[0:-2].lower() in qanda.keys():
+            response = qanda.get(word[0:-2].lower())
+            return response
+
+        elif word[0:-3].lower() in qanda.keys():
+            response = qanda.get(word[0:-3].lower())
+            return response
+
+        elif word[0:-3].lower() + "e" in qanda.keys():
+            response = qanda.get(word[0:-3].lower() + "e")
+            return response
+
+        # Without the others above. This code would still match a keyword to an answer
+
+        elif word.lower() in qanda.keys():
+            response = qanda.get(word.lower())
+            return response
+
+
+def evaluate(event):
+
+    response = questionprocess(entry.get())
+    if response == None:
+        answer="Sorry I'm not the smartest chatbot...Perhaps better ask Mr Abela"
+    else:
+        answer=response
+
+    res.configure(text = answer)
+
+w = Tk()
+Label(w, text="CS Chatbot",font=("Helvetica", 32)).pack()
+Label(w, text="What would you like to know?",font=("Helvetica", 16)).pack()
+Label(w, text="Type your question and press <enter>",font=("Helvetica", 16)).pack()
+
+entry = Entry(w, width=50,)
+entry.bind("<Return>", evaluate)
+entry.pack()
+res = Label(w)
+res.pack()
+w.mainloop()
